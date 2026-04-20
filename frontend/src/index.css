@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-900 text-slate-100 font-sans antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-500 rounded-full;
+  }
+}
+
+@layer utilities {
+  .bg-radial-fade {
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 50%,
+      transparent 40%,
+      #0f172a 100%
+    );
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 6s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 10s ease-in-out 2s infinite;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.05); }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-5xl mx-auto px-4 py-14 md:px-6 md:py-20;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-white mb-2;
+  }
+
+  .section-divider {
+    @apply w-12 h-1 bg-brand-500 rounded mb-10;
+  }
+}

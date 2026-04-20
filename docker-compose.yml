@@ -1,0 +1,67 @@
+version: '3.8'
+
+# Deploy via Docker Swarm:
+#   docker stack deploy -c docker-compose.yml portfolio
+# Build da imagem deve ser feito ANTES do deploy:
+#   docker build -t portfolio-frontend:latest ./frontend
+
+services:
+  frontend:
+    image: portfolio-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    expose:
+      - "80"
+    networks:
+      - network_public
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=network_public"
+
+        # ── HTTP → HTTPS redirect ──────────────────────────────────────────
+        - "traefik.http.routers.portfolio-http.rule=Host(`guimoreira.tech`)"
+        - "traefik.http.routers.portfolio-http.entrypoints=web"
+        - "traefik.http.routers.portfolio-http.middlewares=portfolio-https@docker"
+        - "traefik.http.middlewares.portfolio-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.portfolio-https.redirectscheme.permanent=true"
+
+        # ── HTTPS principal ────────────────────────────────────────────────
+        - "traefik.http.routers.portfolio.rule=Host(`guimoreira.tech`)"
+        - "traefik.http.routers.portfolio.entrypoints=websecure"
+        - "traefik.http.routers.portfolio.tls.certresolver=letsencryptresolver"
+
+        # ── Service ────────────────────────────────────────────────────────
+        - "traefik.http.services.portfolio.loadbalancer.server.port=80"
+
+  # backend:                                      # fase 2 — descomentar quando pronto
+  #   image: portfolio-api:latest
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   expose:
+  #     - "3001"
+  #   env_file: ./backend/.env
+  #   networks:
+  #     - network_public
+  #   deploy:
+  #     replicas: 1
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #     labels:
+  #       - "traefik.enable=true"
+  #       - "traefik.docker.network=network_public"
+  #       - "traefik.http.routers.portfolio-api.rule=Host(`guimoreira.tech`) && PathPrefix(`/api`)"
+  #       - "traefik.http.routers.portfolio-api.entrypoints=websecure"
+  #       - "traefik.http.routers.portfolio-api.tls.certresolver=letsencryptresolver"
+  #       - "traefik.http.services.portfolio-api.loadbalancer.server.port=3001"
+
+networks:
+  network_public:
+    external: true   # rede já existente, gerenciada pelo Traefik
