@@ -27,7 +27,7 @@ export default function Navbar() {
       <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="text-white font-bold text-lg tracking-tight">
           gui<span className="text-brand-500">moreira</span>
-          <span className="text-slate-400">.dev</span>
+          <span className="text-slate-400">.tech</span>
         </a>
 
         <ul className="hidden md:flex items-center gap-8">
