@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh -i ~/.ssh/hostinger_deploy root@187.77.53.199 'curl -sv \"https://guimoreira.tech/assets/index-8MjOXhG2.css\" 2>&1 | grep -E \"< HTTP|< content|Location|404|200|upstream\"')"
+    ]
+  }
+}

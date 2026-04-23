@@ -1,5 +1,9 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(ssh -i ~/.ssh/hostinger_deploy root@187.77.53.199 \"docker stack ps portfolio --no-trunc 2>&1 && echo '---' && docker service logs portfolio_frontend --tail 20 2>&1\")",
+      "Bash(ssh -i ~/.ssh/hostinger_deploy root@187.77.53.199 \"find /opt /root /home -maxdepth 3 -name 'docker-compose.yml' 2>/dev/null | grep -v node_modules\")"
+    ],
     "additionalDirectories": [
       "c:\\Users\\gutin\\.claude\\projects\\c--Users-gutin-Desktop-portifolio\\memory"
     ]
