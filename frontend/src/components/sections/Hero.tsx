@@ -1,4 +1,5 @@
 import { ArrowDown, Linkedin, Instagram } from 'lucide-react'
+import ParticleField from '@/components/ui/ParticleField'
 
 export default function Hero() {
   return (
@@ -19,17 +20,20 @@ export default function Hero() {
       {/* Fade edges over the grid */}
       <div className="absolute inset-0 bg-radial-fade pointer-events-none" />
 
+      {/* Interactive Particle Field — mouse-reactive particles */}
+      <ParticleField />
+
       {/* Glow orb — centro */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-500/10 blur-3xl animate-pulse-slow pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-500/10 blur-3xl animate-pulse-slow pointer-events-none" style={{ zIndex: 0 }} />
 
       {/* Glow orb — canto superior direito */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-brand-700/20 blur-3xl animate-float pointer-events-none" />
+      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-brand-700/20 blur-3xl animate-float pointer-events-none" style={{ zIndex: 0 }} />
 
       {/* Glow orb — canto inferior esquerdo */}
-      <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-brand-500/10 blur-3xl animate-float-delayed pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-brand-500/10 blur-3xl animate-float-delayed pointer-events-none" style={{ zIndex: 0 }} />
 
       {/* Content */}
-      <div className="relative z-10 animate-fade-in">
+      <div className="relative z-10 animate-fade-in pointer-events-none">
         <p className="text-brand-500 font-medium text-sm tracking-widest uppercase mb-4">
           Full Stack Developer
         </p>
@@ -42,7 +46,7 @@ export default function Hero() {
           Soluções que transformam demandas em tecnologia.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-12 pointer-events-auto">
           <a
             href="#projetos"
             className="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
@@ -57,7 +61,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex items-center justify-center gap-6 pointer-events-auto">
           <a
             href="https://www.linkedin.com/in/guimoreira90"
             target="_blank"
