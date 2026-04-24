@@ -58,7 +58,7 @@
 
 @layer components {
   .section-container {
-    @apply max-w-[75rem] mx-auto px-4 py-14 md:px-6 md:py-20;
+    @apply max-w-[90rem] mx-auto px-4 py-14 md:px-6 md:py-20;
   }
 
   .section-title {
