@@ -16,7 +16,7 @@ export const projects: Project[] = [
       'Interface de edição inline com formulário lateral',
     ],
     url: 'https://github.com/gamoreira/gestao_cobranca',
-    image: '/assets/projects/gestaocobranca.png',
+    image: '/assets/projects/gestaocobranca_n8n.png',
     tags: ['n8n', 'React', 'Node.js', 'WhatsApp', 'IA'],
     stack: [
       { name: 'React', category: 'frontend' },
