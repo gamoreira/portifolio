@@ -2,6 +2,34 @@ import type { Project } from '@/types'
 
 export const projects: Project[] = [
   {
+    id: 'gestao-cobrancas',
+    name: 'Gestão de Cobranças',
+    tagline: 'Sistema de cobrança automatizada com IA e WhatsApp',
+    description:
+      'Sistema web para gestão de clientes inadimplentes com automação completa de cobranças via WhatsApp. O fluxo n8n verifica diariamente os vencimentos, aciona um agente de IA (Groq) para gerar mensagens personalizadas e as envia automaticamente, eliminando o trabalho manual de cobranças.',
+    features: [
+      'Cadastro e gestão de clientes com data de vencimento',
+      'Controle de status de envio por cliente',
+      'Automação n8n com Schedule Trigger diário',
+      'Agente IA (Groq) para geração de mensagens humanizadas',
+      'Envio automático de lembretes via WhatsApp',
+      'Interface de edição inline com formulário lateral',
+    ],
+    url: 'https://github.com/gamoreira/gestao_cobranca',
+    image: '/assets/projects/gestaocobranca.png',
+    tags: ['n8n', 'React', 'Node.js', 'WhatsApp', 'IA'],
+    stack: [
+      { name: 'React', category: 'frontend' },
+      { name: 'TypeScript', category: 'frontend' },
+      { name: 'Tailwind CSS', category: 'frontend' },
+      { name: 'Node.js', category: 'backend' },
+      { name: 'n8n', category: 'automation' },
+      { name: 'Groq (LLM)', category: 'automation' },
+      { name: 'WhatsApp API', category: 'automation' },
+      { name: 'Docker', category: 'infra' },
+    ],
+  },
+  {
     id: 'ivaitec',
     name: 'Ivaitec',
     tagline: 'Software sob medida e automação com IA',
