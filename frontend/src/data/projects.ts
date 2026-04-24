@@ -4,15 +4,15 @@ export const projects: Project[] = [
   {
     id: 'gestao-cobrancas',
     name: 'Gestão de Cobranças',
-    tagline: 'Sistema de cobrança automatizada com IA e WhatsApp',
+    tagline: 'Lembretes automáticos de vencimento via WhatsApp com IA',
     description:
-      'Sistema web para gestão de clientes inadimplentes com automação completa de cobranças via WhatsApp. O fluxo n8n verifica diariamente os vencimentos, aciona um agente de IA (Groq) para gerar mensagens personalizadas e as envia automaticamente, eliminando o trabalho manual de cobranças.',
+      'Sistema web para gestão de clientes com envio automático de lembretes no dia do vencimento via WhatsApp. O fluxo n8n é acionado diariamente, identifica quem vence naquele dia e usa um agente de IA (Groq) para gerar e enviar uma mensagem personalizada e humanizada, sem nenhuma intervenção manual.',
     features: [
       'Cadastro e gestão de clientes com data de vencimento',
       'Controle de status de envio por cliente',
-      'Automação n8n com Schedule Trigger diário',
+      'Automação n8n disparada diariamente via Schedule Trigger',
       'Agente IA (Groq) para geração de mensagens humanizadas',
-      'Envio automático de lembretes via WhatsApp',
+      'Lembrete enviado via WhatsApp no próprio dia do vencimento',
       'Interface de edição inline com formulário lateral',
     ],
     url: 'https://github.com/gamoreira/gestao_cobranca',
