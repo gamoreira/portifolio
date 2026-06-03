@@ -6,12 +6,12 @@ export const projects: Project[] = [
     name: 'Gestão de Cobranças',
     tagline: 'Lembretes automáticos de vencimento via WhatsApp com IA',
     description:
-      'Sistema web para gestão de clientes com envio automático de lembretes no dia do vencimento via WhatsApp. O fluxo n8n é acionado diariamente, identifica quem vence naquele dia e usa um agente de IA (Groq) para gerar e enviar uma mensagem personalizada e humanizada, sem nenhuma intervenção manual.',
+      'Sistema web para gestão de clientes com envio automático de lembretes no dia do vencimento via WhatsApp. O fluxo n8n é acionado diariamente, identifica quem vence naquele dia e usa um agente de IA para gerar e enviar uma mensagem personalizada, sem intervenção manual.',
     features: [
       'Cadastro e gestão de clientes com data de vencimento',
       'Controle de status de envio por cliente',
       'Automação n8n disparada diariamente via Schedule Trigger',
-      'Agente IA (Groq) para geração de mensagens humanizadas',
+      'Agente de IA para geração de mensagens humanizadas',
       'Lembrete enviado via WhatsApp no próprio dia do vencimento',
       'Interface de edição inline com formulário lateral',
     ],
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     name: 'Ivaitec',
     tagline: 'Software sob medida e automação com IA',
     description:
-      'Site institucional de empresa especializada em desenvolvimento de software personalizado e automação com inteligência artificial. O projeto apresenta as soluções, diferenciais e processo de trabalho da empresa, com foco em converter visitantes em leads qualificados.',
+      'Site institucional de empresa especializada em desenvolvimento de software personalizado e automação com inteligência artificial. O projeto apresenta soluções, diferenciais e processo de trabalho, com foco em converter visitantes em leads qualificados.',
     features: [
       'Landing page responsiva com animações Framer Motion',
       'Seções: hero, desafios, soluções, processo e CTA',
@@ -64,12 +64,12 @@ export const projects: Project[] = [
     description:
       'Portal de notícias full stack com painel administrativo para gestão de conteúdo. Permite publicação de artigos, categorização, upload de imagens com otimização automática e autenticação de editores. Focado em performance, SEO e experiência de leitura moderna.',
     features: [
-      'CRUD de artigos com editor rich text (React Quill)',
+      'CRUD de artigos com editor rich text',
       'Ordenação de conteúdo via drag-and-drop',
-      'Upload e otimização de imagens com Sharp',
+      'Upload e otimização de imagens',
       'Autenticação de editores com JWT',
       'Dashboard administrativo completo',
-      'SEO com React Helmet e sitemap',
+      'SEO com sitemap e metadados sociais',
       'Rate limiting e headers de segurança',
     ],
     url: 'https://gatonews.com.br',
@@ -94,13 +94,13 @@ export const projects: Project[] = [
     name: 'MyFreela',
     tagline: 'Sistema gerencial para freelancers',
     description:
-      'Plataforma completa para freelancers gerenciarem horas, clientes, tarefas e finanças. Substitui planilhas manuais por um dashboard automatizado com cálculo de receita bruta/líquida, controle de impostos, despesas e geração de relatórios em PDF.',
+      'Plataforma completa para freelancers gerenciarem horas, clientes, tarefas e finanças. Substitui planilhas manuais por um dashboard automatizado com cálculo de receita bruta e líquida, controle de impostos, despesas e geração de relatórios em PDF.',
     features: [
       'Rastreamento de horas e tarefas por cliente',
       'Cálculo automático de receita bruta e líquida',
       'Controle de impostos e despesas',
       'Relatórios mensais e anuais com gráficos',
-      'Geração de relatórios em PDF (PDFKit)',
+      'Geração de relatórios em PDF',
       'Dashboard financeiro com métricas em tempo real',
       'Autenticação segura com JWT',
     ],
@@ -128,7 +128,7 @@ export const projects: Project[] = [
       'Portal de notícias políticas com a proposta "Polêmico, mas verdadeiro!". Oferece cobertura política independente com sistema completo de gestão de conteúdo, categorização por editorias e painel administrativo para editores.',
     features: [
       'Publicação e gestão de artigos políticos',
-      'Categorização por editorias (Política, Brasil)',
+      'Categorização por editorias',
       'Editor rich text com suporte a mídia',
       'Upload e otimização de imagens',
       'Painel administrativo para editores',

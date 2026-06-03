@@ -1,11 +1,12 @@
-import { Zap, Code2, Workflow } from 'lucide-react'
+import { Code2, Workflow, Zap } from 'lucide-react'
+import SectionHeader from '@/components/ui/SectionHeader'
 
 const highlights = [
   {
     icon: Code2,
     title: 'Sistemas Personalizados',
     description:
-      'Desenvolvimento completo de sistemas web sob medida — do levantamento de requisitos ao deploy, com foco em performance e escalabilidade.',
+      'Desenvolvimento completo de sistemas web sob medida, do levantamento de requisitos ao deploy, com foco em performance e escalabilidade.',
   },
   {
     icon: Workflow,
@@ -17,54 +18,49 @@ const highlights = [
     icon: Zap,
     title: 'Liderança Técnica',
     description:
-      'Experiência em arquitetura de software, análise de requisitos e metodologias ágeis (Scrum e Kanban) junto a stakeholders.',
+      'Experiência em arquitetura de software, análise de requisitos e metodologias ágeis, com interação direta com stakeholders.',
   },
 ]
 
 export default function About() {
   return (
-    <section id="sobre" className="bg-dark-800/50">
-      <div className="section-container">
-        <h2 className="section-title">Sobre</h2>
-        <div className="section-divider" />
+    <section id="sobre" className="section-shell">
+      <div className="wrap">
+        <SectionHeader
+          eyebrow="Sobre"
+          title="Transformo demandas em tecnologia concreta."
+          index="// 01 - PERFIL"
+        />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-4 text-slate-300 leading-relaxed">
+        <div className="about-grid">
+          <div className="about-copy reveal">
             <p>
-              Sou Analista de Sistemas com mais de{' '}
-              <span className="text-white font-medium">10 anos de experiência</span> em
-              desenvolvimento e suporte de sistemas web corporativos. Atuo em análise de
-              requisitos, arquitetura de software e liderança técnica.
+              Sou <b>Analista e Desenvolvedor de Sistemas</b> com sólida atuação em PHP, Laravel,
+              Node.js e construção de APIs REST escaláveis, sistemas distribuídos e aplicações de
+              alto desempenho.
             </p>
             <p>
-              Trabalho com foco em soluções eficientes, estáveis e alinhadas às necessidades do
-              negócio. Tenho forte capacidade de transformar demandas em soluções técnicas
-              concretas.
+              Trabalho com foco em soluções <b>eficientes, estáveis e alinhadas ao negócio</b>,
+              com experiência em arquitetura de software, integração com APIs externas, bancos de
+              dados, Docker, AWS e práticas modernas de DevOps.
             </p>
             <p>
               Além do desenvolvimento tradicional, ofereço{' '}
-              <span className="text-brand-500 font-medium">automações com n8n</span> e{' '}
-              <span className="text-brand-500 font-medium">
-                criação de sistemas e sites personalizados
-              </span>{' '}
-              — do zero até o deploy, com acompanhamento completo do projeto.
+              <a className="ln" href="#automacao">automações com n8n</a> e{' '}
+              <a className="ln" href="#projetos">criação de sistemas e sites personalizados</a>,
+              do zero até o deploy, com acompanhamento completo do projeto.
             </p>
           </div>
 
-          <div className="space-y-4">
-            {highlights.map((item) => (
-              <div
-                key={item.title}
-                className="flex gap-4 p-4 rounded-xl bg-dark-800 border border-dark-700 hover:border-brand-500/50 transition-colors"
-              >
-                <div className="flex-shrink-0 w-10 h-10 bg-brand-500/10 rounded-lg flex items-center justify-center text-brand-500">
-                  <item.icon size={20} />
-                </div>
+          <div className="svc-list">
+            {highlights.map((item, index) => (
+              <article className={`svc reveal d${index + 1}`} key={item.title}>
+                <div className="ic"><item.icon size={22} /></div>
                 <div>
-                  <h3 className="text-white font-semibold text-sm mb-1">{item.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>

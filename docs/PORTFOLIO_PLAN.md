@@ -63,7 +63,7 @@ Cards com preview visual. Ao clicar abre modal com:
 | MyFreela              | https://myfreela.guimoreira.tech | Plataforma de freelancers                  |
 
 ### 5. Contato / Footer
-- Email: guilhermeintegrado@gmail.com
+- Email: devgmoreira@gmail.com
 - LinkedIn: https://www.linkedin.com/in/guimoreira90
 - Instagram: (a confirmar handle)
 - Formulário de contato (fase 2, depende de backend)

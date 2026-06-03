@@ -1,7 +1,10 @@
-import { Mail, Linkedin, Instagram, MessageCircle } from 'lucide-react'
+import { ArrowUpRight, Download, Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react'
+import SectionHeader from '@/components/ui/SectionHeader'
 
 const WA_NUMBER = '5544998921504'
 const WA_URL = `https://wa.me/${WA_NUMBER}`
+const EMAIL = 'devgmoreira@gmail.com'
+const resumeUrl = '/assets/docs/guilherme_moreira.pdf'
 
 const contacts = [
   {
@@ -9,12 +12,13 @@ const contacts = [
     label: 'WhatsApp',
     value: '(44) 9 9892-1504',
     href: WA_URL,
+    className: 'wa-ch',
   },
   {
     icon: Mail,
     label: 'Email',
-    value: 'guilhermeintegrado@gmail.com',
-    href: 'mailto:guilhermeintegrado@gmail.com',
+    value: EMAIL,
+    href: `mailto:${EMAIL}`,
   },
   {
     icon: Linkedin,
@@ -28,42 +32,45 @@ const contacts = [
     value: '@guimoreira90',
     href: 'https://instagram.com/guimoreira90',
   },
+  {
+    icon: Download,
+    label: 'Currículo',
+    value: 'baixar PDF',
+    href: resumeUrl,
+    download: true,
+  },
 ]
 
 export default function Contact() {
   return (
-    <section id="contato">
-      <div className="section-container">
-        <h2 className="section-title">Contato</h2>
-        <div className="section-divider" />
+    <section id="contato" className="section-shell">
+      <div className="wrap">
+        <SectionHeader eyebrow="Contato" index="// 07 - VAMOS CONVERSAR" />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-slate-300 text-lg leading-relaxed mb-6">
-              Tem um projeto em mente? Precisa de um sistema personalizado ou automações para o
-              seu negócio?
-            </p>
-            <p className="text-slate-400 leading-relaxed">
-              Entre em contato pelo canal de sua preferência — responderei o mais breve possível.
-            </p>
+        <div className="contact-grid">
+          <div className="contact-copy reveal">
+            <h2>Tem um projeto em mente?</h2>
+            <p>Precisa de um sistema personalizado ou automações para o seu negócio?</p>
+            <p>Entre em contato pelo canal de sua preferência. Respondo o mais breve possível.</p>
+            <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary wa">
+              <MessageCircle />
+              chamar no WhatsApp
+            </a>
           </div>
 
-          <div className="space-y-4">
-            {contacts.map((item) => (
+          <div className="ch-list">
+            {contacts.map((item, index) => (
               <a
-                key={item.label}
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl bg-dark-800 border border-dark-700 hover:border-brand-500/50 transition-colors group"
+                className={`ch reveal d${Math.min(index, 3)} ${item.className ?? ''}`}
+                target={item.download ? undefined : '_blank'}
+                rel={item.download ? undefined : 'noopener noreferrer'}
+                download={item.download}
+                key={item.label}
               >
-                <div className="flex-shrink-0 w-10 h-10 bg-brand-500/10 rounded-lg flex items-center justify-center text-brand-500 group-hover:bg-brand-500/20 transition-colors">
-                  <item.icon size={20} />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 mb-0.5">{item.label}</p>
-                  <p className="text-slate-200 text-sm font-medium">{item.value}</p>
-                </div>
+                <div className="ic"><item.icon size={21} /></div>
+                <div><div className="k">{item.label}</div><div className="v">{item.value}</div></div>
+                <span className="arr"><ArrowUpRight size={18} /></span>
               </a>
             ))}
           </div>

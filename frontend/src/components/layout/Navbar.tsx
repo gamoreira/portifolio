@@ -1,74 +1,81 @@
-import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useTheme } from '@/hooks/useTheme'
 
 const navLinks = [
-  { label: 'Sobre', href: '#sobre' },
-  { label: 'Stacks', href: '#stacks' },
-  { label: 'Projetos', href: '#projetos' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'sobre', href: '#sobre' },
+  { label: 'stacks', href: '#stacks' },
+  { label: 'automação', href: '#automacao' },
+  { label: 'projetos', href: '#projetos' },
+  { label: 'carreira', href: '#carreira' },
+  { label: 'contato', href: '#contato' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [active, setActive] = useState('')
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => setScrolled(window.scrollY > 30)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.querySelector(link.href))
+      .filter((section): section is Element => Boolean(section))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-dark-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-white font-bold text-lg tracking-tight">
-          gui<span className="text-brand-500">moreira</span>
-          <span className="text-slate-400">.tech</span>
+    <nav className={`nav ${scrolled ? 'scrolled' : ''}`} id="nav">
+      <div className="nav-in">
+        <a className="brand" href="#top" aria-label="guimoreira.tech - início">
+          <span className="dot" /><span>gui</span><b>moreira</b><span>.tech</span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-slate-400 hover:text-white transition-colors text-sm font-medium"
-              >
-                {link.label}
-              </a>
-            </li>
+            <a
+              href={link.href}
+              key={link.href}
+              className={active === link.href ? 'active' : ''}
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="hash">#</span> {link.label}
+            </a>
           ))}
-        </ul>
-
-        <button
-          className="md:hidden text-slate-400 hover:text-white"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </nav>
-
-      {menuOpen && (
-        <div className="md:hidden bg-dark-800 border-t border-dark-700 px-6 py-4">
-          <ul className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-slate-300 hover:text-white text-sm font-medium"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
-      )}
-    </header>
+
+        <div className="flex items-center gap-2.5">
+          <button className="theme-btn" onClick={toggleTheme} aria-label="Alternar tema">
+            {theme === 'light' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <a href="#contato" className="btn btn-primary nav-cta py-[11px] px-[18px]">vamos conversar</a>
+          <button
+            className={`burger ${menuOpen ? 'open' : ''}`}
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label="Menu"
+          >
+            <i /><i /><i />
+          </button>
+        </div>
+      </div>
+    </nav>
   )
 }

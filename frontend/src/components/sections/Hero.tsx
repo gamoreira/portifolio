@@ -1,95 +1,59 @@
-import { ArrowDown, Linkedin, Instagram } from 'lucide-react'
-import ParticleField from '@/components/ui/ParticleField'
+import { ArrowDown, ArrowRight, Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react'
+import InteractiveTerminal from '@/components/ui/InteractiveTerminal'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-dark-900">
+    <header className="hero wrap" id="top">
+      <div className="hero-grid">
+        <div className="hero-id reveal">
+          <span className="eyebrow">Full Stack Developer · n8n</span>
+          <h1>
+            Guilherme
+            <br />
+            <span className="l2">Moreira</span>
+          </h1>
+          <p className="hero-tag">
+            Desenvolvimento de sistemas e sites <b>sob medida</b>. Automações inteligentes com{' '}
+            <b>n8n</b>. Soluções que transformam demandas em tecnologia.
+          </p>
 
-      {/* Grid background */}
-      <div
-        className="absolute inset-0 opacity-100"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(99,102,241,0.07) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(99,102,241,0.07) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-        }}
-      />
+          <div className="hero-cta">
+            <a href="#projetos" className="btn btn-primary">
+              <ArrowRight />
+              ver projetos
+            </a>
+            <a href="#contato" className="btn btn-ghost">
+              <Mail />
+              entrar em contato
+            </a>
+          </div>
 
-      {/* Fade edges over the grid */}
-      <div className="absolute inset-0 bg-radial-fade pointer-events-none" />
+          <div className="hero-meta">
+            <div className="stat"><div className="n"><b>10+</b></div><div className="k">anos de experiência</div></div>
+            <div className="stat"><div className="n"><b>n8n</b></div><div className="k">automação e IA</div></div>
+            <div className="stat"><div className="n">full<b>·</b>stack</div><div className="k">do zero ao deploy</div></div>
+          </div>
 
-      {/* Interactive Particle Field — mouse-reactive particles */}
-      <ParticleField />
-
-      {/* Glow orb — centro */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-500/10 blur-3xl animate-pulse-slow pointer-events-none" style={{ zIndex: 0 }} />
-
-      {/* Glow orb — canto superior direito */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-brand-700/20 blur-3xl animate-float pointer-events-none" style={{ zIndex: 0 }} />
-
-      {/* Glow orb — canto inferior esquerdo */}
-      <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-brand-500/10 blur-3xl animate-float-delayed pointer-events-none" style={{ zIndex: 0 }} />
-
-      {/* Content */}
-      <div className="relative z-10 animate-fade-in pointer-events-none">
-        <p className="text-brand-500 font-medium text-sm tracking-widest uppercase mb-4">
-          Full Stack Developer
-        </p>
-        <h1 className="text-4xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-          Guilherme<br />
-          <span className="text-brand-500">Moreira</span>
-        </h1>
-        <p className="text-slate-400 text-base md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
-          Desenvolvimento de sistemas e sites personalizados. Automações inteligentes com n8n.
-          Soluções que transformam demandas em tecnologia.
-        </p>
-
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-12 pointer-events-auto">
-          <a
-            href="#projetos"
-            className="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-          >
-            Ver Projetos
-          </a>
-          <a
-            href="#contato"
-            className="border border-slate-600 hover:border-brand-500 text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-          >
-            Entrar em Contato
-          </a>
+          <div className="hero-socials">
+            <a href="https://www.linkedin.com/in/guimoreira90" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Linkedin size={18} />
+            </a>
+            <a href="https://instagram.com/guimoreira90" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Instagram size={18} />
+            </a>
+            <a href="https://wa.me/5544998921504" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <MessageCircle size={18} />
+            </a>
+          </div>
         </div>
 
-        <div className="flex items-center justify-center gap-6 pointer-events-auto">
-          <a
-            href="https://www.linkedin.com/in/guimoreira90"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-slate-400 hover:text-brand-500 transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={22} />
-          </a>
-          <a
-            href="https://instagram.com/guimoreira90"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-slate-400 hover:text-brand-500 transition-colors"
-            aria-label="Instagram"
-          >
-            <Instagram size={22} />
-          </a>
-        </div>
+        <InteractiveTerminal />
       </div>
 
-      <a
-        href="#sobre"
-        className="absolute bottom-10 z-10 text-slate-600 hover:text-slate-400 transition-colors animate-bounce"
-        aria-label="Rolar para baixo"
-      >
-        <ArrowDown size={24} />
+      <a className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[11px] tracking-[.18em] text-[var(--text-faint)] md:flex" href="#sobre">
+        SCROLL
+        <ArrowDown size={18} className="text-[var(--accent)]" />
       </a>
-    </section>
+    </header>
   )
 }
